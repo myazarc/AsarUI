@@ -6,6 +6,7 @@ build/*
 !node_modules/
 node_modules/*
 !node_modules/about-window/
+!node_modules/asar/
 npm-debug.log
 npm-debug.log.*
 thumbs.db
