@@ -3,6 +3,7 @@ dist/electron/*
 dist/web/*
 build/*
 !build/icons
+!build/images
 !node_modules/
 node_modules/*
 !node_modules/about-window/
