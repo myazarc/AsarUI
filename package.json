@@ -1,6 +1,6 @@
 {
   "name": "asarui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Mustafa Yazar <myazarc@gmail.com>",
   "description": "UI for Asar",
   "license": "MIT",
@@ -47,7 +47,8 @@
       "icon": "build/icons/icon.ico"
     },
     "linux": {
-      "icon": "build/icons"
+      "icon": "build/icons",
+      "target": ["deb", "AppImage"]
     }
   },
   "dependencies": {

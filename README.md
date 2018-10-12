@@ -1,6 +1,19 @@
-# asarui
+# Asar UI
 
-> UI for Asar
+> UI for Asar, Extract All or drag extract file/directory
+
+![Asar UI](build/icons/256x256.png)
+
+## Screenshot
+
+![1](build/images/1.png)
+![2](build/images/2.png)
+
+## Next Version
+* Create Asar Pack
+* Breadcrumb
+* Extract Open File
+* Extracted Open File watch changes and merge
 
 #### Build Setup
 

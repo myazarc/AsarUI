@@ -105,7 +105,7 @@ import { ipcRenderer } from 'electron';
       },
       openAbout () {
         openAboutWindow({
-          icon_path: path.resolve('build/icons/asarui.png'),
+          icon_path: path.join(__static,'asarui.png'),
           package_json_dir: path.resolve(),
           license: 'MIT',
           creator: 'Creator: myazarc (myazarc@gmail.com)',
