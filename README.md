@@ -1,8 +1,18 @@
 # Asar UI
 
+![Github Releases](https://img.shields.io/github/downloads/myazarc/AsarUI/latest/total.svg)
+![GitHub repo size in bytes](https://img.shields.io/github/repo-size/myazarc/AsarUI.svg)
+![GitHub issues](https://img.shields.io/github/issues/myazarc/AsarUI.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/myazarc/AsarUI.svg)
+
 > UI for Asar, Extract All or drag extract file/directory
 
 ![Asar UI](build/icons/256x256.png)
+
+## Links for Download
+* [Click Here(Releases)](https://github.com/myazarc/AsarUI/releases) 
+* [For Ubuntu](https://snapcraft.io/asarui) 
+
 
 ## Screenshot
 
