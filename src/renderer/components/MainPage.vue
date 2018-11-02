@@ -70,6 +70,12 @@ import { ipcRenderer } from 'electron';
       document.getElementById('dropZone').ondrop = (ev) => {
         this.asarFileLocations = ev.dataTransfer.files[0].path;
         this.packName = this.asarFileLocations.split('/').pop();
+        const pattern=new RegExp('/(\.asar)$/gi');
+        if(!pattern.test(this.packName)){
+          ev.preventDefault();
+          this.$electron.remote.dialog.showMessageBox({type: 'error', message: 'Unsupperted File Type!'});
+          return;
+        }
         this.isOpen=false;
         this.history = [];
         this.packFiles = asar.listPackageWithHeader(this.asarFileLocations);

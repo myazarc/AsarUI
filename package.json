@@ -48,7 +48,7 @@
     },
     "linux": {
       "icon": "build/icons",
-      "target": ["deb", "AppImage"]
+      "target": ["deb", "AppImage", "snap"]
     }
   },
   "dependencies": {
