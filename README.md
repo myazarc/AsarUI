@@ -20,10 +20,10 @@
 ![2](build/images/2.png)
 
 ## Next Version
-* Create Asar Pack
-* Breadcrumb
-* Extract Open File
-* Extracted Open File watch changes and merge
+* :heavy_check_mark: Create Asar Pack 
+* :black_square_button: Breadcrumb
+* :black_square_button: Extract Open File
+* :black_square_button: Extracted Open File watch changes and merge
 
 #### Build Setup
 
