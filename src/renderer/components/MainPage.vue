@@ -76,6 +76,7 @@ import { ipcRenderer } from 'electron';
           this.$electron.remote.dialog.showMessageBox({type: 'error', message: 'Unsupperted File Type!'});
           return;
         }
+        this.tmpPath = null;
         this.isOpen=false;
         this.history = [];
         this.packFiles = asar.listPackageWithHeader(this.asarFileLocations);
@@ -122,6 +123,7 @@ import { ipcRenderer } from 'electron';
       open () {
         const file = this.$electron.remote.dialog.showOpenDialog({ properties: ['openFile'], filters: [
         { name: 'Asar Pack', extensions: ['asar'] },],
+        title: 'Select to Asar Pack',
         });
         this.isOpen=false;
         if(file) {
@@ -131,11 +133,14 @@ import { ipcRenderer } from 'electron';
           this.packFiles = asar.listPackageWithHeader(this.asarFileLocations);
           this.subFiles=this.packFiles.files;
           this.isOpen = true;
+          this.tmpPath = null;
         }
       },
       extract(){
-        const file = this.$electron.remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
-        asar.extractAll(this.asarFileLocations,path.join(file[0],this.packName));
+        const file = this.$electron.remote.dialog.showOpenDialog({ properties: ['openDirectory'], title: 'Select to Extract Folder', });
+        if (file) {
+          asar.extractAll(this.asarFileLocations,path.join(file[0],this.packName));
+        }
       },
       back(){
         const data = this.history.pop();
@@ -163,7 +168,19 @@ import { ipcRenderer } from 'electron';
           text += possible.charAt(Math.floor(Math.random() * possible.length));
 
         return text;
-      }
+      },
+      createAsarPack(){
+        const dir =this.$electron.remote.dialog.showOpenDialog(mainWindow, {
+          properties: ['openDirectory'],
+          title: 'Select to Created Folder',
+        });
+        if(dir) {
+          const packName=dir.split('/').pop()+'.asar';
+          asar.createPackage(dir, path.join(dir,'..',packName), function() {
+            this.$electron.remote.dialog.showMessageBox({type: 'info', message: 'Created Pack!'});
+          });
+        }
+      },
     },
     watch: {
       isOpen(val){
