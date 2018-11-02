@@ -5,7 +5,7 @@
         <ph-button-group>
           <ph-button @click.native="open"><ph-icon icon="archive" :text="true"></ph-icon> Open</ph-button>
           <ph-button @click.native="extract" :disabled="!isOpen"><ph-icon icon="export" :text="true"></ph-icon> Extract</ph-button>
-          <ph-button :disabled="true"><ph-icon icon="plus" :text="true"></ph-icon> New</ph-button>
+          <ph-button @click.native="createAsarPack"><ph-icon icon="plus" :text="true"></ph-icon> New</ph-button>
         </ph-button-group>
 
         <ph-button @click.native="openAbout" class="pull-right">
@@ -73,7 +73,7 @@ import { ipcRenderer } from 'electron';
         const pattern=new RegExp('/(\.asar)$/gi');
         if(!pattern.test(this.packName)){
           ev.preventDefault();
-          this.$electron.remote.dialog.showMessageBox({type: 'error', message: 'Unsupperted File Type!'});
+          this.$electron.remote.dialog.showMessageBox({type: 'error', message: 'Unsupperted File Type!', buttons:['Ok']});
           return;
         }
         this.tmpPath = null;
@@ -117,7 +117,7 @@ import { ipcRenderer } from 'electron';
           license: 'MIT',
           creator: 'Creator: myazarc (myazarc@gmail.com)',
           product_name: 'Asar UI',
-          version: 'v1.0.0'
+          version: 'v1.0.2'
         });
       },
       open () {
@@ -170,14 +170,14 @@ import { ipcRenderer } from 'electron';
         return text;
       },
       createAsarPack(){
-        const dir =this.$electron.remote.dialog.showOpenDialog(mainWindow, {
+        const dir =this.$electron.remote.dialog.showOpenDialog({
           properties: ['openDirectory'],
           title: 'Select to Created Folder',
         });
         if(dir) {
-          const packName=dir.split('/').pop()+'.asar';
-          asar.createPackage(dir, path.join(dir,'..',packName), function() {
-            this.$electron.remote.dialog.showMessageBox({type: 'info', message: 'Created Pack!'});
+          const packName=dir[0].split('/').pop()+'.asar';
+          asar.createPackage(dir[0], path.join(dir[0],'..',packName), () => {
+            this.$electron.remote.dialog.showMessageBox({type: 'info', message: 'Created Pack!', buttons:['Ok']});
           });
         }
       },
